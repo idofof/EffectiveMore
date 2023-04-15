@@ -58,16 +58,27 @@ struct ContentView: View {
                     Image(systemName: timeRemaining == 0 ? "cup.and.saucer.fill" : "clock.badge")
                         .font(.system(size: 50, weight: .bold, design: .monospaced))
                         .foregroundColor(Color.primary)
-                    
-                    Text(timeRemaining == 0 ? "休息5分钟！" : "计时中..")
-                        .font(.system(size: 50, weight: .heavy, design: .rounded))
-                        .foregroundColor(Color.primary)
+                        
+                        Text(timeRemaining == 0 ? "休息5分钟！" : "计时中..")
+                            .font(.system(size: 50, weight: .heavy, design: .rounded))
+                            .foregroundColor(Color.primary)
+                    }
+                }
+            
+            Spacer()
+            
+            
+            if timeRemaining == 0 {
+                HStack {
+                    Spacer(minLength: 187)
+                    Text("重新计时")
+                        .foregroundColor(.blue)
+                        .font(.system(size: 40, weight: .bold, design: .monospaced))
+                    Spacer()
                 }
             }
-            
-            Spacer()
-            Spacer()
-            
+                
+                
             HStack {
                 Button(action: {
                     timerIsRunning.toggle()
@@ -78,7 +89,9 @@ struct ContentView: View {
                 }
                 
                 Spacer()
-                
+             
+
+                    
                 Button(action: {
                     timerIsRunning = false
                     timeRemaining = 25
